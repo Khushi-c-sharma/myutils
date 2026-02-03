@@ -61,7 +61,7 @@ pip install git+https://github.com/Khushi-c-sharma/myutils.git
 
 ```bash
 # Clone the repository
-git clone [https://github.com/yourusername/myutils.git](https://github.com/Khushi-c-sharma/myutils)
+git clone https://github.com/Khushi-c-sharma/myutils.git
 cd myutils
 
 # Install in editable mode
@@ -276,7 +276,7 @@ This project follows the **`src/` layout** pattern, which:
 
 ```bash
 # Clone the repository
-git clone [https://github.com/yourusername/myutils.git](https://github.com/Khushi-c-sharma/myutils)
+git clone https://github.com/Khushi-c-sharma/myutils.git
 cd myutils
 
 # Create virtual environment
