@@ -1,0 +1,217 @@
+Metadata-Version: 2.4
+Name: myutils
+Version: 0.1.0
+Summary: Reusable utility modules for authentication, validation, text processing, and math operations
+Author: Khushi Sharma
+License: MIT
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: pydantic>=2.0
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: ipykernel; extra == "dev"
+
+# myutils
+
+A reusable Python utility package containing commonly used modules for:
+
+- Authentication & password validation
+- Email validation (rule-based and regex-based)
+- Text processing utilities
+- Math and number operations
+- Eligibility and grading logic
+- Simple storage and operations helpers
+
+This package follows **industry-standard Python packaging practices** and is designed for reuse across scripts, applications, and Jupyter notebooks.
+
+---
+
+## 📦 Project Structure
+
+```
+project/
+├── pyproject.toml
+├── README.md
+└── src/
+    └── myutils/
+        ├── auth/
+        ├── eligibility/
+        ├── math_ops/
+        ├── operations/
+        ├── storage/
+        ├── text_ops/
+        └── validation/
+```
+
+The project uses the **`src/` layout**, which prevents accidental local imports and mirrors real-world Python package structures.
+
+---
+
+## 🚀 Installation (Editable / Development Mode)
+
+### 📍 Important: Where to run the command
+
+You **must** run the installation from the project root — the directory that contains `pyproject.toml`.
+
+```
+project/
+├── pyproject.toml   ← run pip install here
+├── README.md
+└── src/
+```
+
+### ✅ Correct command
+
+```bash
+cd project
+pip install -e .
+```
+
+### ❌ Common mistake (do not do this)
+
+```bash
+cd project/src
+pip install -e .   # incorrect
+```
+
+### Why this matters
+
+- `pip` searches for `pyproject.toml` in the current directory
+- The package source is resolved from `src/myutils`
+- Running from the wrong directory will fail or install nothing
+
+---
+
+## ✅ Verifying the Installation
+
+After installation, verify that Python resolves the package correctly:
+
+```bash
+python -c "import myutils; print(myutils.__file__)"
+```
+
+Expected output (example):
+
+```
+.../project/src/myutils/__init__.py
+```
+
+This confirms:
+
+- `myutils` is installed
+- It is linked in editable mode
+- Imports will work from anywhere
+
+---
+
+## 📥 Usage Examples
+
+### Email validation (rule-based)
+
+```python
+from myutils.validation import RuleBasedEmailUser
+
+user = RuleBasedEmailUser(email="test@example.com")
+print(user.email)
+```
+
+### Email validation (regex-based)
+
+```python
+from myutils.validation import RegexEmailUser
+
+user = RegexEmailUser(email="user@gmail.com")
+```
+
+### Password strength validation
+
+```python
+from myutils.auth import PasswordUser
+
+user = PasswordUser(password="Strong@123")
+```
+
+### Text utilities
+
+```python
+from myutils.text_ops.frequency import word_frequency
+
+word_frequency("hello world hello")
+```
+
+### Math utilities
+
+```python
+from myutils.math_ops.prime_checker import is_prime
+
+is_prime(17)
+```
+
+---
+
+## 📒 Using with Jupyter Notebooks
+
+Ensure Jupyter runs in the **same virtual environment** where `myutils` is installed.
+
+```bash
+jupyter notebook
+```
+
+Then import normally:
+
+```python
+from myutils.validation import RuleBasedEmailUser
+```
+
+### Optional: register the environment as a kernel
+
+```bash
+python -m ipykernel install --user --name myutils-env
+```
+
+---
+
+## 🧠 Design Principles
+
+- `src/` layout to avoid import shadowing
+- Explicit packages via `__init__.py`
+- No `sys.path` manipulation
+- Domain-driven module organization
+- Reusable, testable logic only
+
+---
+
+## 🧪 Development Setup (Optional)
+
+Install development dependencies:
+
+```bash
+pip install -e .[dev]
+```
+
+Includes:
+
+- `pytest`
+- `ipykernel`
+
+---
+
+## 📌 Requirements
+
+- Python ≥ 3.9
+- Pydantic ≥ 2.0
+
+---
+
+## 🔮 Future Improvements
+
+- Add `tests/` with pytest
+- Introduce semantic versioning
+- Publish to PyPI (public or private)
+- Add CI (linting, formatting, tests)
+
+---
+
+## 📄 License
+
+MIT License
